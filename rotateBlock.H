@@ -31,12 +31,14 @@ scalar beta_move = 0.5 * Moment_Inertia * realDeltaT * realDeltaT + beta_dot_0 *
 beta_0 += beta_move;
 // beta_dot_0 += Moment_Inertia * realDeltaT;
 beta_dot_0 = beta_move/realDeltaT;
+
+/*
 if (beta_dot_0 > 1e-3)
 {
     beta_dot_0 = 1e-3;
     Info << '\n' << "Angular velocity too high, capped at 1e-3 rad/s." << '\n';
 }
-
+*/
 //Info << '\n' << "The angle of rotation is " << beta_move << "with rotation speed" << beta_dot_0 << "degree per seconds." << '\n';
 Info << '\n' << "The new flap angle is " << beta_0 << '\n';
 
@@ -60,7 +62,7 @@ forAllConstIter(labelHashSet, patchList_, iter)
         vectorField newCell = ((oldCell-CoR) & RotTen) + CoR;
 	pointField newPoint = ((oldPoint-CoR) & RotTen) + CoR;
 // Cummulative point displacement
-	pointDisplacement.boundaryField()[patchi] = (newPoint - oldPoint);
+	pointDisplacement.boundaryField()[patchi] == (newPoint - oldPoint);
         cellDisplacement.boundaryField()[patchi] == (newCell - oldCell);
 }
 
