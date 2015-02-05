@@ -33,6 +33,9 @@ beta_0 += beta_move;
 beta_dot_0 = beta_move/realDeltaT;
 
 /*
+// I thought maybe the problem was with the flap turning too fast, turned out
+// to be due to a missing = in pointDisplacement allocation that prevented
+// the points to be moved, causing squeezed cells etc.
 if (beta_dot_0 > 1e-3)
 {
     beta_dot_0 = 1e-3;
