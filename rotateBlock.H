@@ -31,10 +31,10 @@ scalar beta_move = 0.5 * Moment_Inertia * realDeltaT * realDeltaT + beta_dot_0 *
 beta_0 += beta_move;
 // beta_dot_0 += Moment_Inertia * realDeltaT;
 beta_dot_0 = beta_move/realDeltaT;
-if (beta_dot_0 > 8e-4)
+if (beta_dot_0 > 1e-3)
 {
-    beta_dot_0 = 8e-4;
-    Info << '\n' << "Angular velocity too high, capped at 1e-3 deg/s." << '\n';
+    beta_dot_0 = 1e-3;
+    Info << '\n' << "Angular velocity too high, capped at 1e-3 rad/s." << '\n';
 }
 
 //Info << '\n' << "The angle of rotation is " << beta_move << "with rotation speed" << beta_dot_0 << "degree per seconds." << '\n';
