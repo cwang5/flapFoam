@@ -635,6 +635,7 @@ flapFoam.dep: $(WM_PROJECT_DIR)/src/sampling/lnInclude/meshToMeshNewI.H
 flapFoam.dep: $(WM_PROJECT_DIR)/src/sampling/lnInclude/meshToMeshNewTemplates.C
 flapFoam.dep: $(WM_PROJECT_DIR)/src/fvOptions/lnInclude/fvOptionI.H
 flapFoam.dep: $(WM_PROJECT_DIR)/src/fvOptions/lnInclude/fvOptionListTemplates.C
+flapFoam.dep: $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/OFstream.H
 flapFoam.dep: $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/setRootCase.H
 flapFoam.dep: $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/createTime.H
 flapFoam.dep: $(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude/createDynamicFvMesh.H

@@ -10,6 +10,9 @@ IOdictionary newDict
   IOobject::NO_WRITE
  )
 );
+//
+// New addition to output flap angle
+OFstream str(runTime.path()/"angleTime.txt");
 
 // for information on the use of "wordList" to read in patch names,
 // please refer to openFoam function forces::read()
@@ -25,10 +28,10 @@ scalar pArea = 0;
 forAllConstIter(labelHashSet, patchList_, iter)
 {
 	label patchi = iter.key();
-	pArea = gSum(mag(mesh.Sf().boundaryField()[patchi]));
+	pArea += gSum(mag(mesh.Sf().boundaryField()[patchi]));
 //	pArea += patchArea.value();
 }
-Info << '\n' << "The area of the moving patch is " << pArea << '\n';
+Info << '\n' << "The area of the moving patch is " << pArea/2 << '\n';
 // for information on the use of "readScalar" please consult openFoam function "readTimeControls.H"
 vector AoR = newDict.lookup("AxisOfRotation");
 AoR = AoR/mag(AoR);
@@ -79,7 +82,13 @@ scalar beta_dot_0 = 0;
 scalar momentG = 0;
 scalar momentF = 0;
 
+// Set angle limit based on Dict input
 
+scalar beta_limit
+(
+ readScalar(newDict.lookup("betaLimit"))
+)
+;
 
 
 

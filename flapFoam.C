@@ -41,6 +41,10 @@ Description
 #include "dynamicFvMesh.H"
 #include "pimpleControl.H"
 #include "fvIOoptionList.H"
+#include "OFstream.H"
+#include <fstream>
+#include <sstream>
+#include <string>
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

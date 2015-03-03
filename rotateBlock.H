@@ -32,16 +32,13 @@ beta_0 += beta_move;
 // beta_dot_0 += Moment_Inertia * realDeltaT;
 beta_dot_0 = beta_move/realDeltaT;
 
-/*
-// I thought maybe the problem was with the flap turning too fast, turned out
-// to be due to a missing = in pointDisplacement allocation that prevented
-// the points to be moved, causing squeezed cells etc.
-if (beta_dot_0 > 1e-3)
+// angle limiter
+if (beta_0 > beta_limit)
 {
-    beta_dot_0 = 1e-3;
-    Info << '\n' << "Angular velocity too high, capped at 1e-3 rad/s." << '\n';
+    beta_0 = beta_limit;
+    Info << '\n' << "Flap angle limit of " << beta_limit << " reached." << '\n';
 }
-*/
+
 //Info << '\n' << "The angle of rotation is " << beta_move << "with rotation speed" << beta_dot_0 << "degree per seconds." << '\n';
 Info << '\n' << "The new flap angle is " << beta_0 << '\n';
 
@@ -69,3 +66,9 @@ forAllConstIter(labelHashSet, patchList_, iter)
         cellDisplacement.boundaryField()[patchi] == (newCell - oldCell);
 }
 
+
+if (runTime.outputTime())
+{
+	str <<  runTime.timeName() << "  " << beta_0  << endl;
+//	outputFile.close;
+}
